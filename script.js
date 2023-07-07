@@ -1,8 +1,8 @@
 // Scale is distance between grid points
 // This will later determine size of objects placed on grid
-let grid_scale = 40;
+let grid_scale = 50;
 let grid_line_thickness = 1;
-let grid_offset = { x: 0, y: 0 };
+let grid_offset = { x: 10, y: 30 };
 
 let grid_color = '#D0D0D0';
 let background_color = '#808080';
@@ -89,6 +89,8 @@ node_layer.draw();
 // -------- Grid Logic --------
 
 let snap_to_grid_coord = (raw_x, raw_y) => {
+	raw_x -= grid_offset.x;
+	raw_y -= grid_offset.y;
 	grid_x = Math.floor(raw_x / grid_scale);
 	if (raw_x % grid_scale >= Math.floor(grid_scale / 2)) grid_x++;
 	grid_y = Math.floor(raw_y / grid_scale);
